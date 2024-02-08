@@ -1,0 +1,27 @@
+[project]
+name = "governator"
+version = "0.0.1"
+description = "A toolkit for managing data access policies as code"
+readme = "README.md"
+authors = [{name = "Maxime Beauchemin"}]
+license = {text = "apache2"}
+classifiers = [
+]
+dependencies = [
+    "click",
+]
+requires-python = ">3.9"
+scripts = {gor = "governator.cli:cli"}
+
+[project.urls]
+homepage = "https://github.com/preset-io/governator"
+Changelog = "https://github.com/preset-io/governator/releases"
+Issues = "https://github.com/preset-io/governator/issues"
+CI = "https://github.com/preset-io/governator/actions"
+
+[project.optional-dependencies]
+test = ["pytest"]
+dev = ["Flake8-pyproject"]
+
+[tool.flake8]
+max-line-length = 90
