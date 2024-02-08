@@ -2,16 +2,18 @@
 
 <img width="400" src="./docs/governator.png" />
 
-**Governator** is a data governance toolkit focussed on manage your
+**Governator** is a data governance toolkit that allows for managing
 **data access policies** (as in who as access to what) as code.
 
-With DAP, you can pull, push and diff data access rules across different
-database engines and business intelligence tools.
+With **Governator**, you can diff, pull, push and ultimately synchronize
+data access rules across different systems, namely database engines and
+business intelligence tools.
 
 ## But why?
 
-Navigating data access in today's setups is tricky. Data is spread across
-clouds, various data warehouse(s) and databases, and a multitude of BI tools,
+Navigating data access in today's data infrastructure stacks is
+tricky. Data is spread across data warehouses,
+clouds, various databases, and a multitude of BI tools,
 each with its own access rules.
 
 It's a lot to manage.
@@ -27,7 +29,7 @@ Here's what we're dealing with:
   - who **gave** access to this asset to this group?
   - who should be able to grant access to these resources in the first place?
 
-### Sycing BI tools and RDMS
+### Syncing BI tools and RDMS
 
 Historically most BI tools would tend to use service accounts to access
 RDBMS, and have their own data access policy model to expose or hide
@@ -53,9 +55,9 @@ When managed as code, data access policies get:
 
 1. a review/approval flow, through the proven code review processes, leaving
   a trace of who granted what, who approved and merged the change, when
-2. a full trace of what hapenned in time
-3. complex rules and logic can be established, compiled and reviewed
-4. automation: continuous integration-type jobs can be executed to trigger
+1. a full trace of what hapenned in time
+1. complex rules and logic can be established, compiled and reviewed
+1. automation: continuous integration-type jobs can be executed to trigger
   arbitrary workflow, notifications and alerts
 
 
