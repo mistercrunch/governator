@@ -1,14 +1,17 @@
+from dataclasses import dataclass
 from typing import Optional
 
 from governator.config import conf
-from governator.core.database_connection import DatabaseConnection
+from governator.core.database import Database
 
 
+@dataclass
 class Project:
-    databases: list[DatabaseConnection]
+    databases: list[Database]
+    path: Optional[str] = None
 
-    def __init__(self, path: Optional[str] = None):
-        self.path = path or conf["GOVERNATOR_FOLDER"]
+    def __post_init__(self):
+        self.path = self.path or conf["GOVERNATOR_FOLDER"]
 
     def load(self, database_schema=None):
         pass

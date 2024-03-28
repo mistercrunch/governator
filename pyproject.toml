@@ -11,7 +11,12 @@ dependencies = [
     "click",
 ]
 requires-python = ">3.9"
-scripts = {gor = "governator.cli:cli"}
+
+[project.entry-points."console_scripts"]
+gor = "governator.cli:cli"
+governator = "governator.cli:cli"
+
+
 
 [project.urls]
 homepage = "https://github.com/preset-io/governator"

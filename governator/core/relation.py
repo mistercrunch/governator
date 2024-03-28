@@ -8,6 +8,7 @@ from governator.core.base import Serializable, SerializableCollection
 class Column(Serializable):
     key: str
     name: str
+    description: str
     data_type: str
 
 

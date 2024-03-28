@@ -1,5 +1,5 @@
 from dataclasses import fields, is_dataclass
-from typing import Any, Optional
+from typing import Any
 
 import yaml
 
@@ -48,7 +48,7 @@ class Serializable:
             obj = obj[key]
         return yaml.dump(obj, sort_keys=False)
 
-    def to_yaml_file(self, filename: str, wrap_under: Optional[str] = None) -> None:
+    def to_yaml_file(self, filename: str, wrap_under: str | None = None) -> None:
         """Writes the object to a YAML file."""
         d = self.to_serializable()
         if wrap_under is not None:
@@ -72,7 +72,7 @@ class Serializable:
 
 
 class SerializableCollection(dict, Serializable):
-    def __init__(self, l: Optional[list] = None) -> None:
+    def __init__(self, l: list | None = None) -> None:
         l = l or []
         for o in l:
             self[o.key] = o
@@ -87,7 +87,7 @@ class SerializableCollection(dict, Serializable):
 
     @classmethod
     def from_yaml_file(  # type: ignore
-        cls, filename: str, object_class: Serializable, key: Optional[str] = None
+        cls, filename: str, object_class: Serializable, key: str | None = None
     ) -> SerializableCollection:
         """Creates an instance of the class from a YAML file, excluding properties."""
         data = None
