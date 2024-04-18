@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from governator.core.base import Serializable, SerializableCollection
+from governator.core.base import Serializable
 
 
 @dataclass

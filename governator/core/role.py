@@ -1,4 +1,6 @@
+from collections.abc import Iterable
 from dataclasses import dataclass
+from typing import Optional
 
 import governator
 from governator.core.base import Serializable
@@ -7,14 +9,12 @@ from governator.core.base import Serializable
 @dataclass
 class Role(Serializable):
     role: str
-    description: str
+    description: Optional[str] = None
 
-    users: list[governator.User]
-    groups: list[governator.Group]
+    users: "Optional[Iterable[governator.User]]" = set()
+    groups: "Optional[Iterable[governator.Group]]" = set()
 
-    relations: list[governator.Relation]
-    schemas: list[governator.Relation]
-    databases: list[governator.Relation]
+    permissions: "Optional[Iterable[governator.Permission]]" = set()
 
     @property
     def key(self):

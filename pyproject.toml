@@ -30,3 +30,6 @@ dev = ["Flake8-pyproject"]
 
 [tool.flake8]
 max-line-length = 90
+
+[tool.mypy]
+ignore_missing_imports = true

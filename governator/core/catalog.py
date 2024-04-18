@@ -4,9 +4,9 @@ from governator.core.base import Serializable
 
 
 @dataclass
-class Schema(Serializable):
-    schema: str
+class Catalog(Serializable):
+    catalog: str
 
     @property
     def key(self):
-        return f"{self.schema}"
+        return f"{self.catalog}"

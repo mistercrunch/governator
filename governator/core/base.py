@@ -34,7 +34,7 @@ class Serializable:
         }
 
     @classmethod
-    def from_dict(cls, d: dict[Any, Any]) -> Serializable:
+    def from_dict(cls, d: dict[Any, Any]) -> "Serializable":
         """Creates an instance of the class from a dictionary, excluding properties."""
         filtered_dict = {
             key: value for key, value in d.items() if key not in cls.properties()
@@ -57,13 +57,13 @@ class Serializable:
             yaml.dump(d, file, sort_keys=False)
 
     @classmethod
-    def from_yaml(cls, yaml_string: str) -> Serializable:
+    def from_yaml(cls, yaml_string: str) -> "Serializable":
         """Creates an instance of the class from a YAML string, excluding properties."""
         data = yaml.load(yaml_string, Loader=yaml.FullLoader)
         return cls.from_dict(data)
 
     @classmethod
-    def from_yaml_file(cls, filename: str, verbose: bool = True) -> Serializable:
+    def from_yaml_file(cls, filename: str, verbose: bool = True) -> "Serializable":
         """Creates an instance of the class from a YAML file, excluding properties."""
         with open(filename) as file:
             print(f"Loading file {filename}")
@@ -72,23 +72,23 @@ class Serializable:
 
 
 class SerializableCollection(dict, Serializable):
-    def __init__(self, l: list | None = None) -> None:
-        l = l or []
-        for o in l:
+    def __init__(self, iterable: list | None = None) -> None:
+        iterable = iterable or []
+        for o in iterable:
             self[o.key] = o
 
     def to_serializable(self):
-        l = []
+        iterable = []
         for o in self:
             if hasattr(o, "to_dict"):
                 o = o.to_dict()
-            l.append(o)
-        return l
+            iterable.append(o)
+        return iterable
 
     @classmethod
     def from_yaml_file(  # type: ignore
         cls, filename: str, object_class: Serializable, key: str | None = None
-    ) -> SerializableCollection:
+    ) -> "SerializableCollection":
         """Creates an instance of the class from a YAML file, excluding properties."""
         data = None
         with open(filename) as file:
