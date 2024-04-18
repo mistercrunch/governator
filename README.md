@@ -9,7 +9,7 @@ With **Governator**, you can diff, pull, push and ultimately synchronize
 data access rules across different systems, namely database engines and
 business intelligence tools.
 
-<img width="100%" src="./docs/erd.svg" />
+<img width="600" src="./docs/erd.svg" />
 
 ## But why?
 
