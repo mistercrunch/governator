@@ -1,21 +1,23 @@
-from collections.abc import Iterable
-from dataclasses import dataclass
-from typing import Optional
+import typing
 
 import governator
-from governator.core.base import Serializable
 
 
-@dataclass
-class Role(Serializable):
-    role: str
-    description: Optional[str] = None
-
-    users: "Optional[Iterable[governator.User]]" = set()
-    groups: "Optional[Iterable[governator.Group]]" = set()
-
-    permissions: "Optional[Iterable[governator.Permission]]" = set()
+class Role:
+    def __init__(
+        self,
+        role: str,
+        description: typing.Optional[str] = None,
+        users: typing.Optional[typing.Iterable[governator.User]] = None,
+        groups: typing.Optional[typing.Iterable[governator.Group]] = None,
+        permissions: typing.Optional[typing.Iterable[governator.Permission]] = None,
+    ):
+        self.role = role
+        self.description = description
+        self.users = users or set()
+        self.groups = groups or set()
+        self.permissions = permissions or set()
 
     @property
-    def key(self):
+    def key(self) -> str:
         return self.role

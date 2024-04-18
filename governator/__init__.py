@@ -1,6 +1,7 @@
 from governator import utils
 from governator.core.action import Action
 from governator.core.catalog import Catalog
+from governator.core.column import Column
 from governator.core.database import Database
 from governator.core.group import Group
 from governator.core.Permission import Permission
@@ -13,6 +14,7 @@ from governator.core.user import User
 __all__ = [
     "Action",
     "Catalog",
+    "Column",
     "Database",
     "Group",
     "Permission",

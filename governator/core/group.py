@@ -1,15 +1,11 @@
-from dataclasses import dataclass
-from typing import Optional
-
 from governator.core.base import Serializable
-from governator.core.user import User
 
 
-@dataclass
 class Group(Serializable):
-    group: str
-    users: list[User]
-    description: Optional[str] = None
+    def __init__(self, group, users=None, description=None):
+        self.group = group
+        self.users = users or []
+        self.description = description
 
     @property
     def key(self):

@@ -1,11 +1,9 @@
-from dataclasses import dataclass
-
 from governator.core.base import Serializable
 
 
-@dataclass
 class Action(Serializable):
-    action: str
+    def __init__(self, action):
+        self.action = action
 
     @property
     def key(self):

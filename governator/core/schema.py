@@ -1,11 +1,6 @@
-from dataclasses import dataclass
-
-from governator.core.base import Serializable
-
-
-@dataclass
-class Schema(Serializable):
-    schema: str
+class Schema:
+    def __init__(self, schema):
+        self.schema = schema
 
     @property
     def key(self):
