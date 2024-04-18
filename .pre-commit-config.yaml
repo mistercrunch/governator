@@ -33,10 +33,6 @@ repos:
           - --disable-all-dunder-policy
           - --exclude=superset/config.py
           - --extend-exclude=tests/integration_tests/superset_test_config.*.py
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.3.0
     hooks:
