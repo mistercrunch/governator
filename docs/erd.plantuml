@@ -2,12 +2,17 @@
 
 title Governator Entity Relationship Diagram
 
-!theme blueprint
+'!theme blueprint
+!theme crt-amber
 
 ' avoid problems with angled crows feet
+'left to right direction
+
+!define GroupBackground #black
 
 skinparam linetype ortho
 skinparam classBorderColor #grey
+skinparam BackgroundColor #444
 
 skinparam classBorderColor<<new>> #white
 skinparam classBorderThickness<<new>> 1
@@ -16,7 +21,7 @@ skinparam ClassBackgroundColor<<new>> #204143
 
 ' Models
 
-rectangle "Members" #black {
+rectangle "Members" GroupBackground {
 	entity "User" as user {
 		*id: number <<generated>>
 		--
@@ -29,7 +34,7 @@ rectangle "Members" #black {
 	}
 }
 
-rectangle "Core" #black {
+rectangle "Core" GroupBackground {
 	entity "Role" as role {
 		*id: number <<generated>>
 		--
@@ -43,9 +48,10 @@ rectangle "Core" #black {
 }
 
 role }|--|{ user
+role }|--|{ group
 group }|--|{ user
 
-rectangle "Objects" #black {
+rectangle "Objects" GroupBackground {
 	entity "Database" as database {
 		*id: number <<generated>>
 		--
