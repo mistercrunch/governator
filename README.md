@@ -9,6 +9,8 @@ With **Governator**, you can diff, pull, push and ultimately synchronize
 data access rules across different systems, namely database engines and
 business intelligence tools.
 
+<img width="500" src="./docs/erd.svg" />
+
 ## But why?
 
 Navigating data access in today's data infrastructure stacks is
