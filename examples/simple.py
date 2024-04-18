@@ -1,4 +1,4 @@
-from governator import Database, Group, Permission, Project, Role, Schema, User
+from governator import Action, Database, Group, Permission, Project, Role, Schema, User
 
 database1 = Database(key="mydb")
 
@@ -25,7 +25,7 @@ finance_role = Role(
     permissions=[
         Permission(
             schemas=[finance_database_schema],
-            privileges=["SELECT", "INSERT", "UPDATE", "DELETE"],
+            actions=[Action("SELECT")],
         )
     ],
     groups=[finance_group],

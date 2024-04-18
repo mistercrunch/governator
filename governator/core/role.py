@@ -1,16 +1,18 @@
-import typing
+from collections.abc import Iterable
+from typing import TYPE_CHECKING, Optional
 
-import governator
+if TYPE_CHECKING:
+    import governator
 
 
 class Role:
     def __init__(
         self,
         role: str,
-        description: typing.Optional[str] = None,
-        users: typing.Optional[typing.Iterable[governator.User]] = None,
-        groups: typing.Optional[typing.Iterable[governator.Group]] = None,
-        permissions: typing.Optional[typing.Iterable[governator.Permission]] = None,
+        description: "Optional[str]" = None,
+        users: "Optional[Iterable[governator.User]]" = None,
+        groups: "Optional[Iterable[governator.Group]]" = None,
+        permissions: "Optional[Iterable[governator.Permission]]" = None,
     ):
         self.role = role
         self.description = description
