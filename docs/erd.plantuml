@@ -1,0 +1,94 @@
+@startuml entity-relationship-diagram
+
+title Governator Entity Relationship Diagram
+
+!theme blueprint
+
+' avoid problems with angled crows feet
+
+skinparam linetype ortho
+skinparam classBorderColor #grey
+
+skinparam classBorderColor<<new>> #white
+skinparam classBorderThickness<<new>> 1
+skinparam classLineStyle<<new>> Dashed
+skinparam ClassBackgroundColor<<new>> #204143
+
+' Models
+
+rectangle "Members" #black {
+	entity "User" as user {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+	entity "Group" as group {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+}
+
+rectangle "Core" #black {
+	entity "Role" as role {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+	entity "Permission" as perm {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+}
+
+role }|--|{ user
+group }|--|{ user
+
+rectangle "Objects" #black {
+	entity "Database" as database {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+	entity "Catalog" as catalog {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+	entity "Schema" as schema {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+	entity "Relation" as relation {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+	entity "Column" as column {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+	entity "Predicate" as predicate {
+		*id: number <<generated>>
+		--
+		uuid: BINARY(16)
+	}
+}
+database ||--|{ catalog
+catalog ||--|{ schema
+database ||--|{ schema
+schema ||--|{ relation
+relation ||--|{ column
+relation ||--|{ predicate
+
+
+role }|--|{ perm
+
+perm ||--|{ database
+perm ||--|{ catalog
+perm ||--|{ schema
+perm ||--|{ relation
+perm ||--|{ predicate
